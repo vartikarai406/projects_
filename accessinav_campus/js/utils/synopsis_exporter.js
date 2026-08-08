@@ -1,6 +1,6 @@
 /**
  * AccessiNav Academic Mini Project Synopsis & Report Generator
- * Formats a complete B.Tech 2nd Year CSE Project Synopsis for evaluation & viva presentation
+ * Formats a complete B.Tech CSE (Data Science) Project Synopsis for evaluation & viva presentation
  */
 
 class SynopsisExporter {
@@ -9,8 +9,8 @@ class SynopsisExporter {
 # B.TECH MINI PROJECT SYNOPSIS & TECHNICAL SPECIFICATION
 
 **PROJECT TITLE:** AccessiNav Campus - Smart Accessible Campus Navigation System  
-**DOMAIN:** Computer Science & Engineering (Graph Theory, Algorithm Optimization, GIS & Assistive Tech)  
-**ACADEMIC LEVEL:** B.Tech 2nd Year CSE  
+**DOMAIN:** Computer Science & Engineering - Data Science (Graph Theory, Algorithm Optimization, GIS & Assistive Tech)  
+**ACADEMIC LEVEL & BRANCH:** B.Tech 2nd Year CSE (Data Science)  
 
 ---
 
@@ -59,7 +59,7 @@ Modern university campuses feature diverse terrain, multi-story academic blocks,
 
 ---
 
-*Generated automatically by AccessiNav Campus Academic Tool | B.Tech Mini Project 2026*
+*Generated automatically by AccessiNav Campus Academic Tool | B.Tech CSE (DS) Mini Project 2026*
 `;
     }
 
@@ -77,7 +77,7 @@ Modern university campuses feature diverse terrain, multi-story academic blocks,
         modal.innerHTML = `
             <div class="modal-card modal-large glass-panel">
                 <div class="modal-header">
-                    <h3>🎓 B.Tech Project Synopsis & Documentation</h3>
+                    <h3>🎓 B.Tech CSE (Data Science) Project Synopsis & Documentation</h3>
                     <button class="btn-close" onclick="document.getElementById('synopsisReportModal').style.display='none'">✕</button>
                 </div>
                 <div class="modal-body report-body">

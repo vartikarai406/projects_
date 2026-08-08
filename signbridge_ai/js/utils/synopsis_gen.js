@@ -1,5 +1,5 @@
 /**
- * SignBridge AI - Academic B.Tech Project Synopsis Exporter
+ * SignBridge AI - Academic B.Tech CSE (Data Science) Project Synopsis Exporter
  */
 
 class SynopsisExporter {
@@ -8,8 +8,8 @@ class SynopsisExporter {
 # B.TECH MINI PROJECT SYNOPSIS & TECHNICAL SPECIFICATION
 
 **PROJECT TITLE:** SignBridge AI - Real-Time Sign Language Recognition & Translation System  
-**DOMAIN:** Artificial Intelligence, Computer Vision, Assistive Technology & Human-Computer Interaction  
-**ACADEMIC LEVEL:** B.Tech 2nd Year Computer Science & Engineering  
+**DOMAIN:** Artificial Intelligence, Computer Vision, Data Science, Feature Engineering & Assistive Tech  
+**ACADEMIC LEVEL & BRANCH:** B.Tech 2nd Year CSE (Data Science)  
 
 ---
 
@@ -51,7 +51,7 @@ Communication barriers between deaf/hard-of-hearing individuals and non-sign lan
 
 ---
 
-*Generated automatically by SignBridge AI Academic Tool | B.Tech Mini Project 2026*
+*Generated automatically by SignBridge AI Academic Tool | B.Tech CSE (Data Science) Mini Project 2026*
 `;
     }
 
@@ -69,7 +69,7 @@ Communication barriers between deaf/hard-of-hearing individuals and non-sign lan
         modal.innerHTML = `
             <div class="modal-card modal-large glass-panel">
                 <div class="modal-header">
-                    <h3>🎓 B.Tech Project Synopsis & Technical Specification</h3>
+                    <h3>🎓 B.Tech CSE (Data Science) Project Synopsis & Technical Specification</h3>
                     <button class="btn-close" onclick="document.getElementById('synopsisReportModal').style.display='none'">✕</button>
                 </div>
                 <div class="modal-body report-body">

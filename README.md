@@ -1,6 +1,6 @@
-# B.Tech CSE Computer Science Mini Projects Portfolio
+# B.Tech CSE (Data Science) Mini Projects Portfolio
 
-Welcome to the B.Tech Computer Science & Engineering mini-projects repository maintained by **Vartika Rai**. This repository contains two complete, production-grade Web AI & Assistive Computer Vision applications developed for 2nd-year CSE mini-project evaluation.
+Welcome to the B.Tech Computer Science & Engineering (Data Science) mini-projects repository maintained by **Vartika Rai**. This repository contains two complete, production-grade Web AI, Data Analytics & Assistive Computer Vision applications developed for **B.Tech CSE (DS)** project evaluation.
 
 ---
 
@@ -21,7 +21,7 @@ projects_/
 ---
 
 ## 🗺️ Project 1: AccessiNav Campus - Smart Accessible Campus Navigation
-**Domain**: Graph Theory, Accessibility Algorithms, GIS & Assistive Tech  
+**Branch & Domain**: B.Tech CSE (Data Science) | Graph Theory, Multi-Criteria Optimization, GIS & Assistive Tech  
 **Target Goal**: Barrier-free campus navigation for wheelchair users, visually impaired individuals, and people with limited mobility.
 
 ### Key Highlights:
@@ -29,12 +29,12 @@ projects_/
 * **Interactive SVG Campus Map**: Live 2D vector rendering of campus buildings, nodes, ramps, elevators, and glowing neon path lines.
 * **Community Barrier Reporting**: Real-time crowdsourcing of temporary obstacles (broken elevators, construction work) with dynamic graph re-weighting.
 * **Voice Guidance & Emergency SOS**: Web Speech API turn directions and one-touch paramedic SOS dispatch.
-* **Academic Synopsis Exporter**: Built-in modal generating complete B.Tech project synopsis reports.
+* **Academic Synopsis Exporter**: Built-in modal generating complete B.Tech CSE (DS) project synopsis reports.
 
 ---
 
 ## 🤖 Project 2: SignBridge AI - Sign Language Recognition System
-**Domain**: Computer Vision, Artificial Intelligence, Machine Learning & Assistive Tech  
+**Domain & Branch**: B.Tech CSE (Data Science) | Computer Vision, Deep Learning, Feature Engineering & Assistive AI  
 **Target Goal**: Real-time sign language recognition translating hand gestures, alphabets (A-Z), numbers (0-9), and phrases into spoken text and multilingual translations.
 
 ### Key Highlights:
@@ -58,4 +58,4 @@ projects_/
 
 ---
 
-*Maintained by Vartika Rai | B.Tech CSE Mini Projects 2026*
+*Maintained by Vartika Rai | B.Tech CSE (Data Science) Mini Projects 2026*
