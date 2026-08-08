@@ -1,0 +1,165 @@
+/* AccessiNav Navigation Sidebar & Turn-by-Turn Card Styling */
+
+.profile-selector-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.profile-card {
+    background: #0d121f;
+    border: 1px solid var(--border-color);
+    padding: 12px;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+}
+
+.profile-card:hover {
+    border-color: rgba(0, 242, 254, 0.4);
+    background: rgba(0, 242, 254, 0.04);
+}
+
+.profile-card.active {
+    background: rgba(0, 242, 254, 0.1);
+    border-color: var(--primary-cyan);
+    box-shadow: 0 0 15px rgba(0, 242, 254, 0.2);
+}
+
+.profile-icon {
+    font-size: 22px;
+}
+
+.profile-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.profile-desc {
+    font-size: 10px;
+    color: var(--text-muted);
+}
+
+/* Route Summary Metrics Card */
+.route-metrics-card {
+    background: linear-gradient(135deg, rgba(15, 23, 42, 0.9), rgba(30, 41, 59, 0.6));
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    text-align: center;
+}
+
+.metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.metric-val {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-cyan);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.metric-lbl {
+    font-size: 10px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+}
+
+/* Turn-by-Turn Directions List */
+.directions-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 280px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.direction-step-card {
+    background: #0e1422;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    transition: all 0.2s ease;
+}
+
+.direction-step-card.active-step {
+    border-color: var(--primary-cyan);
+    background: rgba(0, 242, 254, 0.08);
+}
+
+.step-icon-box {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+}
+
+.step-content {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.step-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-main);
+    line-height: 1.4;
+}
+
+.step-badges {
+    display: flex;
+    gap: 6px;
+}
+
+.badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.badge-ramp { background: rgba(6, 182, 212, 0.2); color: #06b6d4; }
+.badge-tactile { background: rgba(245, 158, 11, 0.2); color: #f59e0b; }
+.badge-elevator { background: rgba(139, 92, 246, 0.2); color: #8b5cf6; }
+.badge-stairs { background: rgba(239, 68, 68, 0.2); color: #ef4444; }
+.badge-paved { background: rgba(100, 116, 139, 0.2); color: #94a3b8; }
+
+/* Navigation Controller Floating Bar */
+.nav-controller-bar {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(19, 25, 39, 0.92);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--border-color);
+    padding: 12px 24px;
+    border-radius: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+    z-index: 50;
+}
