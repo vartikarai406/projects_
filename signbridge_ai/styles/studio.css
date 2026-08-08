@@ -1,0 +1,44 @@
+/* SignBridge AI - Practice Studio & Admin Recorder CSS */
+
+.practice-card {
+    background: linear-gradient(135deg, rgba(14, 20, 34, 0.9), rgba(26, 38, 62, 0.7));
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+}
+
+.practice-icon {
+    font-size: 48px;
+}
+
+.practice-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-cyan);
+}
+
+.practice-hint {
+    font-size: 13px;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.match-status-badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+}
+
+.match-status-badge.success {
+    background: rgba(16, 185, 129, 0.2);
+    border-color: var(--accent-emerald);
+    color: var(--accent-emerald);
+}

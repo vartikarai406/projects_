@@ -1,0 +1,106 @@
+/* SignBridge AI - Translator & Sentence Builder Sidebar CSS */
+
+.sidebar-panel {
+    background: var(--bg-card);
+    border-left: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.sidebar-tabs {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    background: rgba(10, 14, 24, 0.6);
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 14px 10px;
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-btn:hover {
+    color: var(--text-main);
+}
+
+.tab-btn.active {
+    color: var(--primary-cyan);
+    border-bottom-color: var(--primary-cyan);
+    background: rgba(0, 242, 254, 0.05);
+}
+
+.tab-content {
+    display: none;
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tab-content.active {
+    display: flex;
+}
+
+/* Sentence Display Card */
+.sentence-card {
+    background: #090d16;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    min-height: 140px;
+}
+
+.sentence-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-main);
+    line-height: 1.5;
+}
+
+.sentence-translation {
+    font-size: 14px;
+    color: var(--primary-cyan);
+    font-style: italic;
+}
+
+/* Probability Bars List */
+.prob-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.prob-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.prob-bar-track {
+    height: 6px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.prob-bar-fill {
+    height: 100%;
+    background: linear-gradient(to right, #3b82f6, #00f2fe);
+    transition: width 0.3s ease;
+}

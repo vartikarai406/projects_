@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignBridge AI - Real-Time Sign Language Recognition System</title>
+    <meta name="description" content="AI-powered Sign Language Recognition & Translation application featuring real-time 21 3D-hand landmark tracking, sentence assembly, multilingual TTS speech output, and learning studio.">
+    
+    <!-- FontAwesome Icons & Google Fonts -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Styles -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/vision.css">
+    <link rel="stylesheet" href="styles/translator.css">
+    <link rel="stylesheet" href="styles/studio.css">
+</head>
+<body>
+
+    <!-- Header Navigation Bar -->
+    <header class="app-header">
+        <div class="brand-container">
+            <div class="brand-icon">
+                <i class="fa-solid fa-hands-asl-interpreting"></i>
+            </div>
+            <div>
+                <h1 class="brand-title">SignBridge AI</h1>
+            </div>
+            <span class="brand-badge">B.Tech CSE Project</span>
+        </div>
+
+        <div class="header-actions">
+            <!-- Camera / Simulator Mode Toggle -->
+            <button id="btnCameraToggle" class="btn btn-secondary btn-sm" onclick="window.appInstance.toggleCamera()">
+                <i class="fa-solid fa-video"></i> Start WebCam
+            </button>
+
+            <!-- Academic Synopsis Exporter Button -->
+            <button class="btn btn-primary btn-sm" onclick="window.SynopsisExporter.openReportModal()">
+                <i class="fa-solid fa-file-contract"></i> Academic Synopsis
+            </button>
+        </div>
+    </header>
+
+    <!-- Main App Container -->
+    <main class="app-container">
+        
+        <!-- Left Computer Vision Stream Area -->
+        <section class="vision-panel">
+            
+            <div class="video-container">
+                <video id="webcamVideo" autoplay playsinline></video>
+                <canvas id="canvasOverlay"></canvas>
+
+                <!-- Floating Sign Detector HUD Card -->
+                <div class="hud-card">
+                    <span class="hud-label">PREDICTED SIGN GESTURE</span>
+                    <span id="hudSignLabel" class="hud-sign-text">READY</span>
+                </div>
+
+                <!-- Floating Confidence Meter -->
+                <div class="confidence-badge">
+                    CONFIDENCE: <span id="hudConfidence">99.2%</span>
+                </div>
+            </div>
+
+            <!-- Gesture Simulator Selector Bar (Ensures instant demo even without webcam) -->
+            <div class="sim-controls-bar">
+                <span style="font-size: 12px; font-weight: 600; color: var(--text-muted);">
+                    <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--primary-cyan);"></i> GESTURE SIMULATOR PRESETS:
+                </span>
+                <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                    <button class="btn btn-secondary btn-sm" onclick="window.appInstance.simulateGesture('HELLO')">🖐️ HELLO</button>
+                    <button class="btn btn-secondary btn-sm" onclick="window.appInstance.simulateGesture('THANK YOU')">🙏 THANK YOU</button>
+                    <button class="btn btn-secondary btn-sm" onclick="window.appInstance.simulateGesture('HELP')">👍 HELP</button>
+                    <button class="btn btn-secondary btn-sm" onclick="window.appInstance.simulateGesture('I LOVE YOU')">🤟 I LOVE YOU</button>
+                    <button class="btn btn-secondary btn-sm" onclick="window.appInstance.simulateGesture('WATER')">🥛 WATER</button>
+                    <button class="btn btn-secondary btn-sm" onclick="window.appInstance.simulateGesture('A')">✊ A</button>
+                    <button class="btn btn-secondary btn-sm" onclick="window.appInstance.simulateGesture('B')">✋ B</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Control & Translation Sidebar -->
+        <aside class="sidebar-panel">
+            <nav class="sidebar-tabs">
+                <button class="tab-btn active" onclick="window.appInstance.switchTab('tabTranslate')">
+                    <i class="fa-solid fa-language"></i> Translator
+                </button>
+                <button class="tab-btn" onclick="window.appInstance.switchTab('tabLearn')">
+                    <i class="fa-solid fa-graduation-cap"></i> Practice
+                </button>
+                <button class="tab-btn" onclick="window.appInstance.switchTab('tabAdmin')">
+                    <i class="fa-solid fa-sliders"></i> Dataset
+                </button>
+            </nav>
+
+            <!-- Tab 1: Live Translator & Sentence Builder -->
+            <section id="tabTranslate" class="tab-content active">
+                
+                <!-- Sentence Buffer Card -->
+                <div class="sentence-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="font-size: 11px; font-weight: 600; color: var(--text-muted);">CONTINUOUS SENTENCE BUFFER</span>
+                        <div style="display: flex; gap: 6px;">
+                            <button class="btn btn-secondary btn-sm" onclick="window.appInstance.speakSentence()" title="Speak Out Loud">
+                                <i class="fa-solid fa-volume-high"></i> Speak
+                            </button>
+                            <button class="btn btn-secondary btn-sm" onclick="window.appInstance.clearSentence()" title="Clear">
+                                <i class="fa-solid fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="sentenceDisplay" class="sentence-text">
+                        Waiting for hand gestures...
+                    </div>
+
+                    <div id="sentenceTranslation" class="sentence-translation">
+                        <!-- Translated text appears here -->
+                    </div>
+                </div>
+
+                <!-- Language Selector -->
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <label style="font-size: 11px; font-weight: 600; color: var(--text-muted);">TARGET TRANSLATION LANGUAGE</label>
+                    <select id="selectLang" style="padding: 10px; background: #07090e; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 8px; outline: none;" onchange="window.appInstance.changeLanguage()">
+                        <option value="en">English (Original)</option>
+                        <option value="hi">Hindi (हिंदी)</option>
+                        <option value="es">Spanish (Español)</option>
+                        <option value="fr">French (Français)</option>
+                        <option value="de">German (Deutsch)</option>
+                    </select>
+                </div>
+
+                <!-- Top Probabilities Breakdown -->
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <label style="font-size: 11px; font-weight: 600; color: var(--text-muted);">TOP CLASSIFICATION PROBABILITIES</label>
+                    <div id="probBarsList" style="display: flex; flex-direction: column; gap: 10px;">
+                        <!-- Probabilities rendered here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tab 2: Interactive Practice Studio -->
+            <section id="tabLearn" class="tab-content">
+                <div class="practice-card">
+                    <span id="practiceIcon" class="practice-icon">🖐️</span>
+                    <span id="practiceTitle" class="practice-title">PRACTICE: HELLO</span>
+                    <p id="practiceHint" class="practice-hint">
+                        Open palm facing camera with fingers extended upward.
+                    </p>
+                    <div id="practiceStatus" class="match-status-badge">
+                        Show gesture to camera
+                    </div>
+                    <button class="btn btn-primary" onclick="window.appInstance.nextPracticeLesson()">Next Sign Flashcard</button>
+                </div>
+            </section>
+
+            <!-- Tab 3: Dataset Admin Recorder -->
+            <section id="tabAdmin" class="tab-content">
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <label style="font-size: 11px; font-weight: 600; color: var(--text-muted);">RECORD CUSTOM SIGN GESTURE</label>
+                    <input id="inputCustomLabel" type="text" placeholder="Enter Sign Label (e.g. PEACE, VICTORY)" style="padding: 10px; background: #07090e; border: 1px solid var(--border-color); color: var(--text-main); border-radius: 8px;">
+                    <button class="btn btn-secondary" onclick="window.appInstance.recordCustomSign()">
+                        <i class="fa-solid fa-record-vinyl" style="color: var(--accent-coral);"></i> Capture 21 Landmarks & Train
+                    </button>
+                    <button class="btn btn-secondary" onclick="window.appInstance.datasetTrainer.exportModelJSON()">
+                        <i class="fa-solid fa-download"></i> Export Trained Model JSON
+                    </button>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <label style="font-size: 11px; font-weight: 600; color: var(--text-muted);">RECORDED SAMPLES LOG</label>
+                    <div id="adminSamplesLog" style="font-size: 12px; color: var(--text-muted); display: flex; flex-direction: column; gap: 6px;">
+                        No custom samples recorded yet.
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+    </main>
+
+    <!-- JS Application Scripts -->
+    <script src="js/vision/hand_tracker.js"></script>
+    <script src="js/vision/camera.js"></script>
+    <script src="js/ai/gesture_model.js"></script>
+    <script src="js/ai/sentence_builder.js"></script>
+    <script src="js/features/tts_translator.js"></script>
+    <script src="js/features/learning_studio.js"></script>
+    <script src="js/features/dataset_trainer.js"></script>
+    <script src="js/utils/synopsis_gen.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
