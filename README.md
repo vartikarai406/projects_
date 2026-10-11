@@ -8,14 +8,16 @@ Welcome to the B.Tech Computer Science & Engineering (Data Science) mini-project
 
 ```
 projects_/
-├── accessinav_campus/       # Project 1: Smart Accessible Campus Navigation System
-│   ├── index.html
-│   ├── js/                  # Graph data, Dijkstra router, SVG map renderer, Voice & Admin
-│   └── styles/
-└── signbridge_ai/           # Project 2: Real-Time Sign Language Recognition System
-    ├── index.html
-    ├── js/                  # 21 3D-Landmark Tracker, KNN Gesture AI Classifier, Multilingual TTS
-    └── styles/
+├── vaani-sahay/             # Voice-First Hindi Civic & Utility Assistant (Low Literacy / Elderly)
+│   ├── backend/             # FastAPI, Intent Engine, EasyOCR Bill Parser
+│   ├── static/              # Accessible Mobile Web UI with Web Speech API
+│   ├── data/                # Sample UPPCL & BSES synthetic bills generator
+│   └── tests/               # Dialogue flow & OCR benchmark suites
+├── access-vision-ai/        # Assistive Computer Vision AI
+├── accessinav_campus/       # Smart Accessible Campus Navigation System
+├── herguard-ai/             # Women's Safety & Emergency Response Platform
+├── signbridge_ai/           # Real-Time Sign Language Recognition System
+└── skill2role-ai/           # Career & Role Transition Platform
 ```
 
 ---

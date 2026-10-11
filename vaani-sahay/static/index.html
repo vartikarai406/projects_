@@ -1,0 +1,1222 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>वाणी-सहाय (VaaniSahay) - बोलकर समझें</title>
+  
+  <!-- Fonts: Outfit (modern geometric display) + Rozha One & Rozha/Mukta for Hindi clarity -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&family=Rozha+One&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Warm Indian Civic Palette: Saffron, Royal Peacock Blue, Emerald Green */
+      --saffron-500: #f97316;
+      --saffron-600: #ea580c;
+      --saffron-glow: rgba(249, 115, 22, 0.35);
+      
+      --royal-900: #0f172a;
+      --royal-800: #1e1b4b;
+      --peacock-600: #0284c7;
+      --peacock-500: #0ea5e9;
+      
+      --emerald-600: #059669;
+      --emerald-500: #10b981;
+      
+      --bg-cream: #faf8f5;
+      --card-bg: rgba(255, 255, 255, 0.92);
+      --glass-border: rgba(226, 232, 240, 0.85);
+      
+      --text-dark: #0f172a;
+      --text-muted: #64748b;
+      --text-hindi: #1e293b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Mukta', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 15%, #fff1e6 0%, #faf8f5 50%, #eff6ff 100%);
+      color: var(--text-dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 16px 12px 32px 12px;
+      overflow-x: hidden;
+    }
+
+    /* Ambient background ornamentation */
+    .bg-circle-1 {
+      position: fixed;
+      top: -80px;
+      right: -80px;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.15) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-circle-2 {
+      position: fixed;
+      bottom: -60px;
+      left: -60px;
+      width: 280px;
+      height: 280px;
+      background: radial-gradient(circle, rgba(2, 132, 199, 0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 520px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Modern Hero Header */
+    header {
+      background: linear-gradient(135deg, #1e1b4b 0%, #1e3a8a 60%, #0369a1 100%);
+      color: #ffffff;
+      padding: 24px 22px 20px 22px;
+      border-radius: 28px;
+      text-align: center;
+      box-shadow: 0 16px 36px -8px rgba(30, 27, 75, 0.35);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(249, 115, 22, 0.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .brand-logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #f97316, #ea580c);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      box-shadow: 0 6px 16px var(--saffron-glow);
+    }
+
+    header h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
+    }
+
+    header h1 span {
+      font-family: 'Rozha One', serif;
+      font-size: 32px;
+      background: linear-gradient(135deg, #ffedd5, #fdba74);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-left: 6px;
+    }
+
+    header p {
+      font-size: 16px;
+      color: #cbd5e1;
+      font-weight: 500;
+      margin-top: 6px;
+    }
+
+    .header-badges {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      color: #f1f5f9;
+    }
+
+    .badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    /* Tab Switcher */
+    .tab-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: rgba(226, 232, 240, 0.6);
+      backdrop-filter: blur(10px);
+      padding: 5px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .tab-btn {
+      padding: 12px 14px;
+      font-size: 16px;
+      font-weight: 700;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-muted);
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .tab-btn.active {
+      background: #ffffff;
+      color: var(--royal-900);
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    }
+
+    /* Card Containers */
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      border-radius: 26px;
+      padding: 22px 20px;
+      box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.06);
+      border: 1px solid var(--glass-border);
+      position: relative;
+    }
+
+    .card-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .card-title {
+      font-size: 21px;
+      font-weight: 800;
+      color: var(--royal-900);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-title .icon-pill {
+      width: 34px;
+      height: 34px;
+      background: #f1f5f9;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+    }
+
+    /* Interactive Voice Core Orb */
+    .voice-hub {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      padding: 12px 0 6px 0;
+    }
+
+    .mic-halo-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mic-btn {
+      width: 108px;
+      height: 108px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      border: 6px solid #ffedd5;
+      color: white;
+      font-size: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0 14px 30px var(--saffron-glow);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      z-index: 2;
+    }
+
+    .mic-btn:active {
+      transform: scale(0.92);
+    }
+
+    .mic-btn.listening {
+      background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+      border-color: #fee2e2;
+      box-shadow: 0 16px 36px rgba(239, 68, 68, 0.45);
+    }
+
+    /* Visualizer Ring Waves */
+    .sound-ring {
+      position: absolute;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      border: 2px solid #fdba74;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+
+    .mic-btn.listening ~ .sound-ring-1 {
+      opacity: 1;
+      animation: ripple 1.6s infinite ease-out;
+    }
+
+    .mic-btn.listening ~ .sound-ring-2 {
+      opacity: 1;
+      animation: ripple 1.6s infinite ease-out 0.5s;
+    }
+
+    @keyframes ripple {
+      0% { transform: scale(0.9); opacity: 0.8; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+
+    /* Status Pill Bar */
+    .status-capsule {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 30px;
+      padding: 8px 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--text-dark);
+      transition: all 0.3s;
+    }
+
+    .status-capsule.active-speaking {
+      background: #eff6ff;
+      border-color: #bfdbfe;
+      color: #1d4ed8;
+    }
+
+    /* Animated Audio Waveform Graphic */
+    .waveform {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      height: 18px;
+    }
+
+    .wave-bar {
+      width: 3px;
+      height: 6px;
+      background: #ea580c;
+      border-radius: 2px;
+      transition: height 0.2s;
+    }
+
+    .listening .wave-bar {
+      background: #dc2626;
+      animation: soundDance 0.8s infinite ease-in-out alternate;
+    }
+
+    .active-speaking .wave-bar {
+      background: #2563eb;
+      animation: soundDance 0.8s infinite ease-in-out alternate;
+    }
+
+    .wave-bar:nth-child(2) { animation-delay: 0.15s; }
+    .wave-bar:nth-child(3) { animation-delay: 0.3s; }
+    .wave-bar:nth-child(4) { animation-delay: 0.45s; }
+
+    @keyframes soundDance {
+      0% { height: 4px; }
+      100% { height: 18px; }
+    }
+
+    /* Conversational Dialogue Card */
+    .dialogue-card {
+      background: #ffffff;
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: all 0.3s ease;
+    }
+
+    .speaker-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .speaker-tag {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e3a8a;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .speaker-avatar {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #dbeafe;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .dialogue-text {
+      font-size: 19px;
+      font-weight: 600;
+      line-height: 1.6;
+      color: #0f172a;
+    }
+
+    .controls-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 4px;
+    }
+
+    .action-btn {
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+    .btn-primary:active { transform: scale(0.96); }
+
+    .btn-secondary {
+      background: #f1f5f9;
+      color: #334155;
+    }
+    .btn-secondary:active { background: #e2e8f0; }
+
+    /* Interactive Voice Prompt Cards (Carousel / Grid) */
+    .prompt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .prompt-tile {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 12px 14px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .prompt-tile:hover {
+      border-color: #fdba74;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(249, 115, 22, 0.08);
+    }
+
+    .prompt-tile:active {
+      transform: scale(0.97);
+    }
+
+    .prompt-icon {
+      font-size: 20px;
+    }
+
+    .prompt-label {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--royal-900);
+    }
+
+    .prompt-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Bill Scanner Dropzone / Camera */
+    .upload-box {
+      border: 2px dashed #cbd5e1;
+      border-radius: 20px;
+      padding: 24px 16px;
+      text-align: center;
+      cursor: pointer;
+      background: linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+      transition: all 0.2s;
+      position: relative;
+    }
+
+    .upload-box:hover {
+      border-color: #0284c7;
+      background: #f0f9ff;
+    }
+
+    .upload-box input {
+      display: none;
+    }
+
+    .camera-icon-badge {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      background: #e0f2fe;
+      color: #0284c7;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      margin-bottom: 8px;
+      box-shadow: 0 6px 14px rgba(2, 132, 199, 0.15);
+    }
+
+    /* Sample Bill Cards */
+    .sample-strip {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 6px 2px;
+      margin-top: 12px;
+    }
+
+    .sample-card-chip {
+      flex: 1;
+      min-width: 140px;
+      background: #ffffff;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 10px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.2s;
+    }
+
+    .sample-card-chip:hover {
+      border-color: #f97316;
+      box-shadow: 0 4px 12px rgba(249, 115, 22, 0.1);
+    }
+
+    .sample-thumb {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      background: #fff7ed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      font-weight: 800;
+      color: #ea580c;
+    }
+
+    /* Result Metric Highlights */
+    .bill-result-panel {
+      margin-top: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .metric-card-hero {
+      background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+      border: 1.5px solid #a7f3d0;
+      border-radius: 20px;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .metric-card-hero .label {
+      font-size: 16px;
+      font-weight: 700;
+      color: #065f46;
+    }
+
+    .metric-card-hero .value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      color: #047857;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .metric-subcard {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 12px 14px;
+    }
+
+    .metric-subcard .sub-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .metric-subcard .sub-val {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--royal-900);
+      margin-top: 2px;
+    }
+
+    .bill-preview-img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 16px;
+      margin-top: 12px;
+      border: 1px solid #cbd5e1;
+      display: none;
+    }
+
+    /* Multi-step Pension Form Wizard Indicator */
+    .wizard-progress-bar {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .wizard-progress-bar::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 10px;
+      right: 10px;
+      height: 3px;
+      background: #e2e8f0;
+      z-index: 0;
+      transform: translateY(-50%);
+    }
+
+    .wizard-step-node {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #f1f5f9;
+      border: 2px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: #64748b;
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s;
+    }
+
+    .wizard-step-node.active {
+      background: #f97316;
+      border-color: #ffedd5;
+      color: #ffffff;
+      box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.2);
+    }
+
+    .wizard-step-node.completed {
+      background: #10b981;
+      border-color: #ecfdf5;
+      color: #ffffff;
+    }
+
+    /* Floating Quick Reset Pill */
+    .footer-help-bar {
+      text-align: center;
+      margin-top: 6px;
+    }
+
+    .reset-link-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .reset-link-btn:hover {
+      color: #64748b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="bg-circle-1"></div>
+<div class="bg-circle-2"></div>
+
+<div class="container">
+  <!-- Brand Header -->
+  <header>
+    <div class="brand-row">
+      <div class="brand-logo-icon">🎙️</div>
+      <h1>वाणी<span>सहाय</span></h1>
+    </div>
+    <p>बोलकर समझें बिजली का बिल और भरें सरकारी फॉर्म</p>
+    
+    <div class="header-badges">
+      <div class="badge">
+        <span class="badge-dot"></span>
+        <span>आवाज़ पहचान सक्रिय</span>
+      </div>
+      <div class="badge">
+        <span>⚡ त्वरित हिंदी अनुवाद</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Interactive Mode Tabs -->
+  <div class="tab-bar">
+    <button id="tabVoiceBtn" class="tab-btn active" onclick="switchView('voice')">
+      <span>🗣️ आवाज़ सहायक</span>
+    </button>
+    <button id="tabBillBtn" class="tab-btn" onclick="switchView('bill')">
+      <span>📄 बिल स्कैनर</span>
+    </button>
+  </div>
+
+  <!-- VIEW 1: VOICE ASSISTANT & PENSION WIZARD -->
+  <div id="voiceSection" class="card">
+    <div class="card-header-bar">
+      <div class="card-title">
+        <span class="icon-pill">🎙️</span>
+        <span>बोलकर बातचीत करें</span>
+      </div>
+      <button class="action-btn btn-secondary" style="padding: 4px 10px; font-size: 13px;" onclick="handlePrompt('कैंसिल करो शुरू से')">
+        🔄 रीसेट
+      </button>
+    </div>
+
+    <!-- Active Voice Hub -->
+    <div class="voice-hub">
+      <div class="mic-halo-wrapper">
+        <button id="micBtn" class="mic-btn" title="बोलने के लिए दबाएं">
+          🎤
+        </button>
+        <div class="sound-ring sound-ring-1"></div>
+        <div class="sound-ring sound-ring-2"></div>
+      </div>
+
+      <div id="statusCapsule" class="status-capsule">
+        <div class="waveform">
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+          <div class="wave-bar"></div>
+        </div>
+        <span id="statusText">माइक बटन दबाकर बोलें</span>
+      </div>
+    </div>
+
+    <!-- Multi-Step Form Indicator (Appears when in Pension Wizard) -->
+    <div id="wizardTracker" style="display: none; margin-top: 14px;">
+      <div style="font-size: 13px; font-weight: 700; color: #1e3a8a; margin-bottom: 8px;">
+        पेंशन फॉर्म प्रगति (Pension Form Progress):
+      </div>
+      <div class="wizard-progress-bar">
+        <div class="wizard-step-node" id="stepNode1">1</div>
+        <div class="wizard-step-node" id="stepNode2">2</div>
+        <div class="wizard-step-node" id="stepNode3">3</div>
+        <div class="wizard-step-node" id="stepNode4">4</div>
+        <div class="wizard-step-node" id="stepNode5">5</div>
+      </div>
+    </div>
+
+    <!-- Spoken Assistant Response Bubble -->
+    <div id="dialogueContainer" style="margin-top: 14px;">
+      <div class="dialogue-card">
+        <div class="speaker-meta">
+          <div class="speaker-tag">
+            <div class="speaker-avatar">🤖</div>
+            <span>वाणी सहायक (Assistant)</span>
+          </div>
+          <span style="font-size: 12px; color: var(--text-muted); font-weight: 600;" id="liveClock">अभी</span>
+        </div>
+
+        <div id="dialogueText" class="dialogue-text">
+          नमस्ते! मैं वाणी-सहाय हूँ। आप मुझसे बोलकर बिजली का बिल समझ सकते हैं या वृद्धावस्था पेंशन फॉर्म भर सकते हैं।
+        </div>
+
+        <div class="controls-row">
+          <button id="replayBtn" class="action-btn btn-primary">
+            <span>🔊</span>
+            <span>दोबारा सुनें</span>
+          </button>
+          <button id="stopAudioBtn" class="action-btn btn-secondary">
+            <span>⏹️</span>
+            <span>रोकें</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Voice Prompts for Accessibility -->
+    <div style="margin-top: 18px;">
+      <div style="font-size: 14px; color: var(--text-muted); font-weight: 700; margin-bottom: 8px;">
+        सीधे टैप करके पूछें (Quick Suggestions):
+      </div>
+      <div class="prompt-grid">
+        <div class="prompt-tile" onclick="handlePrompt('मेरा बिजली का बिल कितना है?')">
+          <div class="prompt-icon">💡</div>
+          <div class="prompt-label">बिजली का बिल</div>
+          <div class="prompt-sub">राशि और अंतिम तारीख जानें</div>
+        </div>
+
+        <div class="prompt-tile" onclick="handlePrompt('मुझे पेंशन फॉर्म भरना है')">
+          <div class="prompt-icon">📋</div>
+          <div class="prompt-label">पेंशन फॉर्म गाइड</div>
+          <div class="prompt-sub">कदम-दर-कदम आवाज़ में भरें</div>
+        </div>
+
+        <div class="prompt-tile" onclick="handlePrompt('नमस्ते सहायता करो')">
+          <div class="prompt-icon">🙏</div>
+          <div class="prompt-label">सहायता / मदद</div>
+          <div class="prompt-sub">उपयोग कैसे करें समझें</div>
+        </div>
+
+        <div class="prompt-tile" onclick="handlePrompt('कैंसिल करो शुरू से')">
+          <div class="prompt-icon">🔄</div>
+          <div class="prompt-label">शुरू से शुरू करें</div>
+          <div class="prompt-sub">फॉर्म प्रक्रिया रद्द करें</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VIEW 2: BILL SCANNER & CAMERA OCR -->
+  <div id="billSection" class="card" style="display: none;">
+    <div class="card-header-bar">
+      <div class="card-title">
+        <span class="icon-pill">📄</span>
+        <span>बिजली का बिल स्कैन</span>
+      </div>
+      <span style="font-size: 13px; font-weight: 700; color: #0284c7;">UPPCL • BSES</span>
+    </div>
+
+    <!-- Upload/Camera Target Area -->
+    <label class="upload-box" for="billFileInput">
+      <div class="camera-icon-badge">📷</div>
+      <div style="font-size: 18px; font-weight: 800; color: var(--royal-900);">
+        बिल की फोटो लें या अपलोड करें
+      </div>
+      <div style="font-size: 14px; color: var(--text-muted); margin-top: 4px;">
+        कैमरा अपने आप बिल से राशि व तारीख पढ़ लेगा
+      </div>
+      <input type="file" id="billFileInput" accept="image/*" capture="environment">
+    </label>
+
+    <!-- 1-Click Interactive Test Samples -->
+    <div style="margin-top: 14px;">
+      <div style="font-size: 14px; font-weight: 700; color: var(--text-muted);">
+        जांच हेतु सैंपल बिल (1-क्लिक टेस्ट):
+      </div>
+      <div class="sample-strip">
+        <div class="sample-card-chip" onclick="loadSampleBill('sample_uppcl.jpg')">
+          <div class="sample-thumb">UP</div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700;">UPPCL बिल</div>
+            <div style="font-size: 13px; color: #059669; font-weight: 700;">₹640 देय</div>
+          </div>
+        </div>
+
+        <div class="sample-card-chip" onclick="loadSampleBill('sample_bses.jpg')">
+          <div class="sample-thumb" style="background: #e0f2fe; color: #0284c7;">DL</div>
+          <div>
+            <div style="font-size: 15px; font-weight: 700;">BSES बिल</div>
+            <div style="font-size: 13px; color: #059669; font-weight: 700;">₹1,250 देय</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bill Image Preview -->
+    <img id="billPreview" class="bill-preview-img" alt="Bill Preview">
+
+    <!-- Extracted Bill Information Highlight -->
+    <div id="billResults" class="bill-result-panel" style="display: none;">
+      <div class="metric-card-hero">
+        <div>
+          <div class="label">कुल देय राशि (Amount Due)</div>
+          <div style="font-size: 13px; color: #047857;">अंतिम तारीख से पहले भरें</div>
+        </div>
+        <div id="resAmount" class="value">--</div>
+      </div>
+
+      <div class="metric-row">
+        <div class="metric-subcard">
+          <div class="sub-label">अंतिम तारीख (Due Date)</div>
+          <div id="resDate" class="sub-val">--</div>
+        </div>
+        <div class="metric-subcard">
+          <div class="sub-label">उपभोक्ता संख्या (CA No)</div>
+          <div id="resCid" class="sub-val">--</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-help-bar">
+    <button class="reset-link-btn" onclick="handlePrompt('कैंसिल करो शुरू से')">
+      सभी सत्र रीसेट करें (Reset Session)
+    </button>
+  </div>
+</div>
+
+<script>
+  let lastSpokenText = "नमस्ते! मैं वाणी-सहाय हूँ। आप मुझसे बोलकर बिजली का बिल समझ सकते हैं या वृद्धावस्था पेंशन फॉर्म भर सकते हैं।";
+  let isListening = false;
+  let recognition = null;
+  let currentAudio = null;
+
+  // DOM Elements
+  const voiceSection = document.getElementById("voiceSection");
+  const billSection = document.getElementById("billSection");
+  const tabVoiceBtn = document.getElementById("tabVoiceBtn");
+  const tabBillBtn = document.getElementById("tabBillBtn");
+
+  const micBtn = document.getElementById("micBtn");
+  const statusCapsule = document.getElementById("statusCapsule");
+  const statusText = document.getElementById("statusText");
+  const dialogueText = document.getElementById("dialogueText");
+  const replayBtn = document.getElementById("replayBtn");
+  const stopAudioBtn = document.getElementById("stopAudioBtn");
+  const billFileInput = document.getElementById("billFileInput");
+  const billPreview = document.getElementById("billPreview");
+  const billResults = document.getElementById("billResults");
+  const wizardTracker = document.getElementById("wizardTracker");
+
+  // Tab View Switcher
+  function switchView(viewName) {
+    if (viewName === 'voice') {
+      voiceSection.style.display = 'block';
+      billSection.style.display = 'none';
+      tabVoiceBtn.classList.add('active');
+      tabBillBtn.classList.remove('active');
+    } else {
+      voiceSection.style.display = 'none';
+      billSection.style.display = 'block';
+      tabVoiceBtn.classList.remove('active');
+      tabBillBtn.classList.add('active');
+    }
+  }
+
+  // Web Speech Recognition Initialization
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (SpeechRecognition) {
+    recognition = new SpeechRecognition();
+    recognition.lang = 'hi-IN';
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onstart = () => {
+      isListening = true;
+      micBtn.classList.add("listening");
+      statusCapsule.classList.remove("active-speaking");
+      statusText.innerText = "सुन रहा हूँ... बोलिए (Listening)";
+    };
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      statusText.innerText = `सुना: "${transcript}"`;
+      handlePrompt(transcript);
+    };
+
+    recognition.onerror = (event) => {
+      console.warn("Speech recognition error:", event.error);
+      stopListening();
+      statusText.innerText = "आवाज़ नहीं मिली, दोबारा दबाएं";
+    };
+
+    recognition.onend = () => {
+      stopListening();
+    };
+  }
+
+  function toggleListening() {
+    if (!recognition) {
+      alert("आपके ब्राउज़र में आवाज़ पहचान (Web Speech) उपलब्ध नहीं है। कृपया नीचे दिए गए उदाहरण बटनों का उपयोग करें।");
+      return;
+    }
+    if (isListening) {
+      recognition.stop();
+      stopListening();
+    } else {
+      stopSpeaking();
+      try {
+        recognition.start();
+      } catch (e) {
+        console.error(e);
+      }
+    }
+  }
+
+  function stopListening() {
+    isListening = false;
+    micBtn.classList.remove("listening");
+  }
+
+  micBtn.addEventListener("click", toggleListening);
+
+  // Send turn to backend
+  async function handlePrompt(text) {
+    stopSpeaking();
+    switchView('voice');
+    statusText.innerText = "सोच रहा हूँ... (Processing)";
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: text, session_id: "demo_user" })
+      });
+      const data = await res.json();
+      
+      // Update Pension wizard progress dots if in form mode
+      updateWizardProgress(data.mode, data.step_index);
+      
+      // If user asked about bill, switch to bill tab automatically!
+      if (data.mode === "bill_ready") {
+        setTimeout(() => switchView('bill'), 1200);
+      }
+
+      displayAssistantReply(data.reply_text);
+    } catch (err) {
+      console.error(err);
+      displayAssistantReply("माफ़ कीजिये, सर्वर से संपर्क नहीं हो पाया। कृपया दोबारा प्रयास करें।");
+    }
+  }
+
+  function updateWizardProgress(mode, stepIndex) {
+    if (mode === "form_wizard") {
+      wizardTracker.style.display = "block";
+      for (let i = 1; i <= 5; i++) {
+        const node = document.getElementById(`stepNode${i}`);
+        node.className = "wizard-step-node";
+        if (i - 1 < stepIndex) {
+          node.classList.add("completed");
+        } else if (i - 1 === stepIndex) {
+          node.classList.add("active");
+        }
+      }
+    } else {
+      wizardTracker.style.display = "none";
+    }
+  }
+
+  function displayAssistantReply(reply) {
+    lastSpokenText = reply;
+    dialogueText.innerText = reply;
+    statusText.innerText = "माइक बटन दबाकर बोलें";
+    statusCapsule.classList.add("active-speaking");
+    speakText(reply);
+  }
+
+  // Text-To-Speech: First attempt Browser Synthesis, fallback to backend /api/tts
+  function speakText(text) {
+    stopSpeaking();
+
+    if ('speechSynthesis' in window) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'hi-IN';
+      utterance.rate = 0.95;
+      
+      const voices = window.speechSynthesis.getVoices();
+      const hindiVoice = voices.find(v => v.lang.startsWith('hi'));
+      if (hindiVoice) {
+        utterance.voice = hindiVoice;
+      }
+
+      utterance.onend = () => {
+        statusCapsule.classList.remove("active-speaking");
+      };
+
+      utterance.onerror = () => {
+        fallbackServerTTS(text);
+      };
+
+      window.speechSynthesis.speak(utterance);
+      return;
+    }
+
+    fallbackServerTTS(text);
+  }
+
+  function fallbackServerTTS(text) {
+    const ttsUrl = `/api/tts?text=${encodeURIComponent(text)}`;
+    currentAudio = new Audio(ttsUrl);
+    currentAudio.onended = () => {
+      statusCapsule.classList.remove("active-speaking");
+    };
+    currentAudio.play().catch(e => console.log("Audio play error:", e));
+  }
+
+  function stopSpeaking() {
+    statusCapsule.classList.remove("active-speaking");
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+    }
+    if (currentAudio) {
+      currentAudio.pause();
+      currentAudio = null;
+    }
+  }
+
+  replayBtn.addEventListener("click", () => {
+    if (lastSpokenText) speakText(lastSpokenText);
+  });
+
+  stopAudioBtn.addEventListener("click", stopSpeaking);
+
+  // Bill Image Upload Handling
+  billFileInput.addEventListener("change", async (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      billPreview.src = ev.target.result;
+      billPreview.style.display = "block";
+    };
+    reader.readAsDataURL(file);
+
+    uploadAndProcessBill(file);
+  });
+
+  async function uploadAndProcessBill(fileOrBlob, filename = "bill.jpg") {
+    statusText.innerText = "बिल पढ़ा जा रहा है... (Analyzing)";
+    const formData = new FormData();
+    formData.append("file", fileOrBlob, filename);
+
+    try {
+      const res = await fetch("/api/scan_bill", {
+        method: "POST",
+        body: formData
+      });
+      const data = await res.json();
+
+      document.getElementById("resAmount").innerText = data.amount_due || "नहीं मिला";
+      document.getElementById("resDate").innerText = data.due_date || "नहीं मिली";
+      document.getElementById("resCid").innerText = data.consumer_id || "उपलब्ध नहीं";
+      billResults.style.display = "flex";
+
+      displayAssistantReply(data.spoken_summary_hi);
+    } catch (err) {
+      console.error(err);
+      displayAssistantReply("बिल पढ़ने में समस्या आई। कृपया साफ़ फोटो दोबारा अपलोड करें।");
+    }
+  }
+
+  async function loadSampleBill(sampleName) {
+    const url = `/samples/${sampleName}`;
+    billPreview.src = url;
+    billPreview.style.display = "block";
+
+    try {
+      const resp = await fetch(url);
+      const blob = await resp.blob();
+      uploadAndProcessBill(blob, sampleName);
+    } catch (e) {
+      console.error("Failed to load sample bill", e);
+    }
+  }
+</script>
+
+</body>
+</html>
