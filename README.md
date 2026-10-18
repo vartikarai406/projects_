@@ -8,6 +8,11 @@ Welcome to the B.Tech Computer Science & Engineering (Data Science) mini-project
 
 ```
 projects_/
+├── autopilot-ai/            # Intelligent Workflow Automation Platform (DAG Planner, Sandboxed Tools, Approvals)
+│   ├── backend/             # FastAPI, Dependency Executor, Output Verifier, Tool Registry
+│   ├── frontend/            # React + TypeScript + Vite + Tailwind CSS Dashboard
+│   ├── workspace/           # Sandboxed data directory & sample datasets
+│   └── tests/               # Pytest suite for DAG planning, approvals, and sandbox
 ├── vaani-sahay/             # Voice-First Hindi Civic & Utility Assistant (Low Literacy / Elderly)
 │   ├── backend/             # FastAPI, Intent Engine, EasyOCR Bill Parser
 │   ├── static/              # Accessible Mobile Web UI with Web Speech API
@@ -19,6 +24,21 @@ projects_/
 ├── signbridge_ai/           # Real-Time Sign Language Recognition System
 └── skill2role-ai/           # Career & Role Transition Platform
 ```
+
+---
+
+## ⚡ Project 7: AutoPilot AI — Intelligent Workflow Automation Platform
+**Domain & Branch**: B.Tech CSE (Data Science) | Agentic AI, Workflow Orchestration, DAG Planning & Tool Security  
+**Target Goal**: Autonomous workflow automation transforming natural-language goals into verifiable, dependency-ordered tasks with deterministic human approval gates.
+
+### Key Highlights:
+* **Natural-Language Task Planner**: Translates user goals into structured DAG execution pipelines with dependency resolution. Works out-of-the-box with built-in heuristic planner or plug-and-play LLM providers (Gemini / OpenAI).
+* **Agent Execution Engine**: Multi-state workflow lifecycle (`pending`, `running`, `awaiting_approval`, `completed`, `failed`), bounded retries, and cancellation controls.
+* **Empirical Output Verification**: Verifies schema integrity, non-zero file sizes, and disk artifacts before claiming task success.
+* **Human-in-the-Loop Security Gate**: Interactive review modal pauses execution and requires explicit human sign-off before consequential actions (e.g. sending emails, external mutations).
+* **Sandboxed Tool Registry**: Secure CSV analytics, Matplotlib chart generator, web research adapter, and ReportLab executive PDF generator.
+* **Modern React + Vite Dashboard**: Dark charcoal/navy design system, visual DAG graph, live execution timeline, and immutable audit logs.
+
 
 ---
 

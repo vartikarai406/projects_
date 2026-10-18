@@ -1,0 +1,8 @@
+ticket_id,customer_name,company,category,rating,sentiment,feedback_text,submitted_at
+TK-1001,Elena Rostova,FinTech Global,Performance,5,Positive,Workflow execution is exceptionally fast and the visual dependency graph made complex pipelines intuitive.,2026-08-02
+TK-1002,Marcus Chen,Nexus Logistics,Security,5,Positive,Strict human approval gating for external API dispatches gave our infosec team full confidence.,2026-08-05
+TK-1003,David Kim,AeroDynamics,Reporting,4,Positive,The auto-generated PDF executive reports look polished and ready for board presentation.,2026-08-11
+TK-1004,Sarah Jenkins,BioHealth Labs,Integration,2,Negative,Encountered rate limit errors during high-frequency batch processing. Would appreciate smoother retries.,2026-08-18
+TK-1005,Liam Gallagher,Horizon Media,Usability,5,Positive,Natural language planning saves hours of manual task chaining each week.,2026-08-25
+TK-1006,Sophia Martinez,Retail Pulse,Performance,3,Neutral,Chart generation works well but would like more customization on color palettes.,2026-09-02
+TK-1007,Amara Okafor,Vanguard Security,Compliance,5,Positive,The immutable audit log trail is top-notch for SOC2 compliance audits.,2026-09-10

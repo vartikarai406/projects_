@@ -1,0 +1,17 @@
+date,region,product_line,sales_rep,units_sold,unit_price,revenue,customer_segment
+2026-07-01,North America,Enterprise AI Suite,Sarah Connor,12,4500,54000,Enterprise
+2026-07-03,EMEA,Cloud Workflow Engine,John Miller,25,1800,45000,Mid-Market
+2026-07-08,APAC,Data Analytics Tool,Ken Tanaka,40,950,38000,Small Business
+2026-07-12,North America,Automation Gateway,Alex Vance,18,3200,57600,Enterprise
+2026-07-15,LATAM,Cloud Workflow Engine,Maria Santos,15,1800,27000,Mid-Market
+2026-07-22,North America,Enterprise AI Suite,Sarah Connor,14,4500,63000,Enterprise
+2026-07-28,EMEA,Enterprise AI Suite,John Miller,8,4500,36000,Enterprise
+2026-08-04,APAC,Automation Gateway,Ken Tanaka,22,3200,70400,Mid-Market
+2026-08-11,North America,Data Analytics Tool,Alex Vance,35,950,33250,Small Business
+2026-08-17,EMEA,Cloud Workflow Engine,John Miller,20,1800,36000,Mid-Market
+2026-08-23,LATAM,Automation Gateway,Maria Santos,12,3200,38400,Mid-Market
+2026-08-30,North America,Enterprise AI Suite,Sarah Connor,16,4500,72000,Enterprise
+2026-09-05,APAC,Enterprise AI Suite,Ken Tanaka,10,4500,45000,Enterprise
+2026-09-12,EMEA,Data Analytics Tool,John Miller,45,950,42750,Small Business
+2026-09-18,North America,Cloud Workflow Engine,Alex Vance,28,1800,50400,Mid-Market
+2026-09-25,APAC,Cloud Workflow Engine,Ken Tanaka,18,1800,32400,Mid-Market
